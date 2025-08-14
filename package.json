@@ -1,0 +1,157 @@
+{
+  "name": "den",
+  "displayName": "Developer Environment",
+  "description": "Developer environment extension for VS Code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "den.createConfig",
+        "title": "Create Config File",
+        "category": "DEN"
+      },
+      {
+        "command": "den.openSettings",
+        "title": "Open DEN Settings",
+        "category": "DEN"
+      },
+      {
+        "command": "den.validateConfig",
+        "title": "Validate Configuration",
+        "category": "DEN"
+      },
+      {
+        "command": "den.reloadConfig",
+        "title": "Reload Configuration",
+        "category": "DEN"
+      },
+      {
+        "command": "den.statusBarClick",
+        "title": "DEN Status Bar Click",
+        "category": "DEN"
+      },
+      {
+        "command": "den.showConfigInfo",
+        "title": "Show Configuration Info",
+        "category": "DEN"
+      },
+      {
+        "command": "den.clearCache",
+        "title": "Clear Configuration Cache",
+        "category": "DEN"
+      },
+      {
+        "command": "den.git.showPRs",
+        "title": "Show Pull Requests",
+        "category": "DEN"
+      },
+      {
+        "command": "den.git.switchBranch",
+        "title": "Switch Git Branch",
+        "category": "DEN"
+      },
+      {
+        "command": "den.git.showRepositoryInfo",
+        "title": "Show Repository Info",
+        "category": "DEN"
+      },
+      {
+        "command": "den.git.refreshGitStatus",
+        "title": "Refresh Git Status",
+        "category": "DEN"
+      }
+    ],
+    "configuration": {
+      "title": "Developer Environment",
+      "properties": {
+        "den.configPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to custom configuration file (absolute or relative to workspace)"
+        },
+        "den.autoSearch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically search for configuration files in workspace"
+        },
+        "den.cacheTimeout": {
+          "type": "number",
+          "default": 30000,
+          "minimum": 5000,
+          "maximum": 300000,
+          "description": "Configuration cache timeout in milliseconds (5s - 5m)"
+        },
+        "den.enableFileWatching": {
+          "type": "boolean",
+          "default": true,
+          "description": "Watch for configuration file changes and auto-reload"
+        },
+        "den.git.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Git and source control features"
+        },
+        "den.git.branches": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["develop", "test", "master", "main"],
+          "description": "Git branches to monitor for pull requests"
+        },
+        "den.git.pollingInterval": {
+          "type": "number",
+          "default": 300000,
+          "minimum": 60000,
+          "maximum": 1800000,
+          "description": "Pull request polling interval in milliseconds (1m - 30m)"
+        },
+        "den.git.showNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show notifications for new pull requests"
+        },
+        "den.git.includeDraftPRs": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include draft pull requests in monitoring"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.11.0",
+    "js-yaml": "^4.1.0",
+    "simple-git": "^3.28.0"
+  }
+}

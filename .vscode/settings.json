@@ -1,0 +1,9 @@
+{
+    "den.autoSearch": true,
+    "den.configPath": "",
+    "den.git.enabled": true,
+    "den.git.branches": ["develop", "test", "master", "main"],
+    "den.git.pollingInterval": 300000,
+    "den.git.showNotifications": true,
+    "den.git.includeDraftPRs": false
+}
