@@ -1,0 +1,14 @@
+name: Developer Environment
+version: 1.0.0
+environment: development
+tools:
+  - git
+  - npm
+  - docker
+  - vscode
+settings:
+  autoSave: true
+  formatOnSave: true
+  lintOnSave: true
+  gitAutoCommit: false
+  dockerAutoStart: true
